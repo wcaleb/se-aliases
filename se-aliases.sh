@@ -63,6 +63,12 @@ function wikipedia
 	open "http://en.wikipedia.org/w/index.php?search=`urlencode "$1"`"
 }
 
+# Note: Handbook of Texas Online uses %20 instead of + for spaces
+function hotx
+{
+	open "http://www.tshaonline.org/search/node/`echo "$1" | sed 's/ /%20/g'`"
+}
+
 # The rest of these probably will not work for everyone.
 
 function ebsco
