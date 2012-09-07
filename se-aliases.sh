@@ -75,4 +75,7 @@ function clio
 	open "http://web.ebscohost.com.ezproxy.rice.edu/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
 }
 
-
+function anb
+{
+	open "http://www.anb.org.ezproxy.rice.edu/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "$1"`&Login=Quick+Search"
+}
