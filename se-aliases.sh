@@ -57,3 +57,8 @@ function ebsco
 {
 	open "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
 }
+
+function clio
+{
+	open "http://web.ebscohost.com.ezproxy.rice.edu/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
+}
