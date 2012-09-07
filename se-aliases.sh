@@ -43,11 +43,6 @@ function images
 	open "http://images.google.com/images?q=`urlencode "$1"`"
 }
 
-function images
-{
-	open "http://images.google.com/images?q=`urlencode "$1"`"
-}
-
 function amazon
 {
 	open "http://www.amazon.com/s/?url=search-alias%3Daps&field-keywords=`urlencode "$1"`"
@@ -58,9 +53,26 @@ function imdb
 	open "http://www.imdb.com/find?q=`urlencode "$1"`&s=all"
 }
 
+function spanish
+{
+	open "http://translate.google.com/#en/es/`urlencode "$1"`"
+}
+
+function english
+{
+	open "http://translate.google.com/#es/en/`urlencode "$1"`"
+}
+
 function wikipedia
 {
 	open "http://en.wikipedia.org/w/index.php?search=`urlencode "$1"`"
+}
+
+# Search Flickr for Creative Commons pictures
+# http://yubnub.org/kernel/man?args=fliccr
+function flickr
+{
+	open "http://flickr.com/search/?q=`urlencode "$1"`&l=cc&ss=1&ct=6"
 }
 
 # Note: Handbook of Texas Online uses %20 instead of + for spaces
