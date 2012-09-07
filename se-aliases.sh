@@ -9,3 +9,27 @@ function scholar
 	open "http://scholar.google.com/scholar?hl=en&q=$QUERY"
 }
 
+function books
+{
+	QUERY=$(urlencode "$1")
+	open "http://books.google.com/books?hl=en&q=$QUERY"
+}
+
+function images
+{
+	QUERY=$(urlencode "$1")
+	open "http://images.google.com/images?q=$QUERY"
+}
+
+function images
+{
+	QUERY=$(urlencode "$1")
+	open "http://images.google.com/images?q=$QUERY"
+}
+
+function amazon
+{
+	QUERY=$(urlencode "$1")
+	open "http://www.amazon.com/s/?url=search-alias%3Daps&field-keywords=$QUERY"
+}
+
