@@ -53,3 +53,7 @@ function amazon
 	open "http://www.amazon.com/s/?url=search-alias%3Daps&field-keywords=`urlencode "$1"`"
 }
 
+function ebsco
+{
+	open "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
+}
