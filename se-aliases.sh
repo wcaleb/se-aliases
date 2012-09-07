@@ -1,15 +1,14 @@
 # Search Engine Aliases
 # by W. Caleb McDaniel, 2012
-# 
-# Free software distributed under GNU General Public License. No warranty.
-#
+
 # The idea for this was suggested by Lincoln Mullen's post on
 # configuring Chrome for specific search engines. I source this file 
 # in my bashrc, and then use DTerm or the Terminal to quickly search. 
 # This method makes Mullen's ideas browser-independent on the Mac.
 # Search engines can be tied to specific browsers using the -a flag for
-# the open command. For more context, see:
+# the open command. Feel free to fork and use however you see fit.
 #
+# For more context, see:
 # http://chronicle.com/blogs/profhacker/how-to-hack-urls-for-faster-searches-in-your-browser/42304
 
 
