@@ -53,6 +53,13 @@ function amazon
 	open "http://www.amazon.com/s/?url=search-alias%3Daps&field-keywords=`urlencode "$1"`"
 }
 
+function imdb
+{
+	open "http://www.imdb.com/find?q=`urlencode "$1"`&s=all"
+}
+
+# The rest of these probably will not work for everyone.
+
 function ebsco
 {
 	open "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
@@ -62,3 +69,5 @@ function clio
 {
 	open "http://web.ebscohost.com.ezproxy.rice.edu/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
 }
+
+
