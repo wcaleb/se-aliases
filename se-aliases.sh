@@ -58,6 +58,11 @@ function imdb
 	open "http://www.imdb.com/find?q=`urlencode "$1"`&s=all"
 }
 
+function wikipedia
+{
+	open "http://en.wikipedia.org/w/index.php?search=`urlencode "$1"`"
+}
+
 # The rest of these probably will not work for everyone.
 
 function ebsco
