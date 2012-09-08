@@ -69,9 +69,10 @@ function wikipedia
 
 # Search Flickr for Creative Commons pictures
 # http://yubnub.org/kernel/man?args=fliccr
+# s=int sorts the results by "interesting"
 function flickr
 {
-	open "http://flickr.com/search/?q=`urlencode "$1"`&l=cc&ss=1&ct=6"
+	open "http://flickr.com/search/?q=`urlencode "$1"`&l=cc&ss=1&ct=6&s=int"
 }
 
 # Note: Handbook of Texas Online uses %20 instead of + for spaces
