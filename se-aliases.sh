@@ -75,10 +75,20 @@ function flickr
 	open "http://flickr.com/search/?q=`urlencode "$1"`&l=cc&ss=1&ct=6&s=int"
 }
 
+function youtube
+{
+	open "http://www.youtube.com/results?search_query=`urlencode "$1"`"
+}
+
 # Note: Handbook of Texas Online uses %20 instead of + for spaces
 function hotx
 {
 	open "http://www.tshaonline.org/search/node/`echo "$1" | sed 's/ /%20/g'`"
+}
+
+function stack
+{
+	open "http://stackoverflow.com/search?q=`urlencode "$1"`"
 }
 
 # The rest of these probably will not work for everyone.
