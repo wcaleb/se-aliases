@@ -107,3 +107,8 @@ function anb
 {
 	open "http://www.anb.org.ezproxy.rice.edu/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "$1"`&Login=Quick+Search"
 }
+
+function jstor
+{
+	open "http://www.jstor.org/action/doBasicSearch?Query=`urlencode "$1"`"
+}
