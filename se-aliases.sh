@@ -33,6 +33,14 @@ alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.ar
 
 myproxy=''
 
+# Different OSes have different commands for opening a URL in a browser 
+# from a command line. Change the alias below to the proper command for 
+# your OS. The default 'open' works on Macs. On Ubuntu the command would 
+# be 'gnome-open' instead. You could also use this alias to change the 
+# browser that opened the URL. And if you wished to change the flags for 
+# the open command, you could do it in one place by changing the alias.
+
+alias searchopen='open'
 
 # Use these at the command line by typing the function's name and the
 # query. Queries with more than one word should be enclosed in double
@@ -46,42 +54,42 @@ myproxy=''
 
 function scholar
 {
-	open "http://scholar.google.com$myproxy/scholar?hl=en&q=`urlencode "$1"`"
+	searchopen "http://scholar.google.com$myproxy/scholar?hl=en&q=`urlencode "$1"`"
 }
 
 function books
 {
-	open "http://books.google.com/books?hl=en&q=`urlencode "$1"`"
+	searchopen "http://books.google.com/books?hl=en&q=`urlencode "$1"`"
 }
 
 function images
 {
-	open "http://images.google.com/images?q=`urlencode "$1"`"
+	searchopen "http://images.google.com/images?q=`urlencode "$1"`"
 }
 
 function amazon
 {
-	open "http://www.amazon.com/s/?url=search-alias%3Daps&field-keywords=`urlencode "$1"`"
+	searchopen "http://www.amazon.com/s/?url=search-alias%3Daps&field-keywords=`urlencode "$1"`"
 }
 
 function imdb
 {
-	open "http://www.imdb.com/find?q=`urlencode "$1"`&s=all"
+	searchopen "http://www.imdb.com/find?q=`urlencode "$1"`&s=all"
 }
 
 function spanish
 {
-	open "http://translate.google.com/#en/es/`urlencode "$1"`"
+	searchopen "http://translate.google.com/#en/es/`urlencode "$1"`"
 }
 
 function english
 {
-	open "http://translate.google.com/#es/en/`urlencode "$1"`"
+	searchopen "http://translate.google.com/#es/en/`urlencode "$1"`"
 }
 
 function wikipedia
 {
-	open "http://en.wikipedia.org/w/index.php?search=`urlencode "$1"`"
+	searchopen "http://en.wikipedia.org/w/index.php?search=`urlencode "$1"`"
 }
 
 # Search Flickr for Creative Commons pictures
@@ -89,44 +97,44 @@ function wikipedia
 # s=int sorts the results by "interesting"
 function flickr
 {
-	open "http://flickr.com/search/?q=`urlencode "$1"`&l=cc&ss=1&ct=6&s=int"
+	searchopen "http://flickr.com/search/?q=`urlencode "$1"`&l=cc&ss=1&ct=6&s=int"
 }
 
 function youtube
 {
-	open "http://www.youtube.com/results?search_query=`urlencode "$1"`"
+	searchopen "http://www.youtube.com/results?search_query=`urlencode "$1"`"
 }
 
 # Note: Handbook of Texas Online uses %20 instead of + for spaces
 function hotx
 {
-	open "http://www.tshaonline.org/search/node/`echo "$1" | sed 's/ /%20/g'`"
+	searchopen "http://www.tshaonline.org/search/node/`echo "$1" | sed 's/ /%20/g'`"
 }
 
 function stack
 {
-	open "http://stackoverflow.com/search?q=`urlencode "$1"`"
+	searchopen "http://stackoverflow.com/search?q=`urlencode "$1"`"
 }
 
 function clio
 {
-	open "http://web.ebscohost.com$myproxy/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
+	searchopen "http://web.ebscohost.com$myproxy/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
 }
 
 function anb
 {
-	open "http://www.anb.org$myproxy/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "$1"`&Login=Quick+Search"
+	searchopen "http://www.anb.org$myproxy/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "$1"`&Login=Quick+Search"
 }
 
 function jstor
 {
-	open "http://www.jstor.org$myproxy/action/doBasicSearch?Query=`urlencode "$1"`"
+	searchopen "http://www.jstor.org$myproxy/action/doBasicSearch?Query=`urlencode "$1"`"
 }
 
 # The rest of these probably will not work for everyone.
 
 function ebsco
 {
-	open "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
+	searchopen "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
 }
 
