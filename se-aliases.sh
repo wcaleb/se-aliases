@@ -27,11 +27,12 @@ alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.ar
 #  Then in the # search functions which you want to run through the 
 #  library proxy, add the following:
 #     http://www.jstor.org$myproxy/
-# If you don't have a library proxy, leave the string empty. Even the 
-# searches which other users have provided will still work without a 
-# proxy.
+# If you don't have a library proxy, leave the string empty:
+# 	  myproxy=''
+# Even the searches which other users have provided will still work
+# without a proxy.
 
-myproxy=''
+myproxy='.ezproxy.rice.edu'
 
 
 # Different OSes have different commands for opening a URL in a browser 
@@ -201,10 +202,9 @@ function wordpress
   searchopen "http://wordpress.org/search/do-search.php?search=`urlencode "$1"`"
 }
 
-# You'll want to change this to your institution in the subdomain
 function worldcat
 {
-  searchopen "http://brandeis.worldcat.org$myproxy/search?qt=wc_org_brandeis&q=`urlencode "$1"`&scope=0&oldscope=&wcsbtn2w=Search"
+  searchopen "http://www.worldcat.org$myproxy/search?q=`urlencode "$1"`"
 }
 
 # This is the engine for the Rice University library's OneSearch tool.
