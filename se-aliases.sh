@@ -64,9 +64,30 @@ function books
 	searchopen "http://books.google.com/books?hl=en&q=`urlencode "$1"`"
 }
 
+# Searches for media type "texts" in archive.org
+function archiveorg
+{
+	searchopen "http://archive.org/search.php?query=`urlencode "$1"`%20AND%20mediatype%3Atexts"
+}
+
 function images
 {
 	searchopen "http://images.google.com/images?q=`urlencode "$1"`"
+}
+
+function jstor
+{
+	searchopen "http://www.jstor.org$myproxy/action/doBasicSearch?Query=`urlencode "$1"`"
+}
+
+function clio
+{
+	searchopen "http://web.ebscohost.com$myproxy/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
+}
+
+function anb
+{
+	searchopen "http://www.anb.org$myproxy/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "$1"`&Login=Quick+Search"
 }
 
 function amazon
@@ -186,25 +207,11 @@ function worldcat
   searchopen "http://brandeis.worldcat.org$myproxy/search?qt=wc_org_brandeis&q=`urlencode "$1"`&scope=0&oldscope=&wcsbtn2w=Search"
 }
 
-# The rest of these probably will not work for everyone.
-
+# This is the engine for the Rice University library's OneSearch tool.
+# It may not work universally.
 function ebsco
 {
 	open "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
 }
 
-function clio
-{
-	searchopen "http://web.ebscohost.com$myproxy/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
-}
-
-function anb
-{
-	searchopen "http://www.anb.org$myproxy/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "$1"`&Login=Quick+Search"
-}
-
-function jstor
-{
-	searchopen "http://www.jstor.org$myproxy/action/doBasicSearch?Query=`urlencode "$1"`"
-}
 
