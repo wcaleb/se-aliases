@@ -135,83 +135,83 @@ function hotx
 	searchopen "http://www.tshaonline.org/search/node/`echo "$1" | sed 's/ /%20/g'`"
 }
 
-function stack
+function stackover
 {
 	searchopen "http://stackoverflow.com/search?q=`urlencode "$1"`"
 }
 
-function super
+function superuser
 {
-	open "http://superuser.com/search?q=`urlencode "$1"`"
+	searchopen "http://superuser.com/search?q=`urlencode "$1"`"
 }
 
 function wikipedia
 {
-  searchopen "http://en.wikipedia.org/wiki/Special:Search?search=`urlencode "$1"`"
+	searchopen "http://en.wikipedia.org/wiki/Special:Search?search=`urlencode "$1"`"
 }
 
 # Bookfinder for book price comparison
 function bookfinder   
 {
-  searchopen "http://www.bookfinder.com/search/?keywords=`urlencode "$1"`&st=xl&ac=qr&src=opensearch"
+	searchopen "http://www.bookfinder.com/search/?keywords=`urlencode "$1"`&st=xl&ac=qr&src=opensearch"
 }
 
 # Library of Congress catalog
 function lcongress    
 {
-  searchopen "http://catalog.loc.gov/vwebv/search?searchArg=`urlencode "$1"`&searchCode=GKEY%5E*&searchType=0&recCount=100&sk=en_US"
+	searchopen "http://catalog.loc.gov/vwebv/search?searchArg=`urlencode "$1"`&searchCode=GKEY%5E*&searchType=0&recCount=100&sk=en_US"
 }
 
 # Amazon Video on Demand
 function vod
 {
-  searchopen "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Damazontv&field-keywords=`urlencode "$1"`&x=0&y=0"
+	searchopen "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Damazontv&field-keywords=`urlencode "$1"`&x=0&y=0"
 }
 
 function profhacker
 {
-  searchopen "http://chronicle.com$myproxy/search/?contextId=5&searchQueryString=`urlencode "$1"`&facetName%5B0%5D=content&facetName%5B1%5D=blog&facetValue%5B0%5D=blogPost&facetValue%5B1%5D=27&facetCaption%5B0%5D=Blog+Post&facetCaption%5B1%5D=ProfHacker&omni_mfs=true"
+	searchopen "http://chronicle.com$myproxy/search/?contextId=5&searchQueryString=`urlencode "$1"`&facetName%5B0%5D=content&facetName%5B1%5D=blog&facetValue%5B0%5D=blogPost&facetValue%5B1%5D=27&facetCaption%5B0%5D=Blog+Post&facetCaption%5B1%5D=ProfHacker&omni_mfs=true"
 }
 
 
 function google
 {
-  searchopen "http://www.google.com/search?q=`urlencode "$1"`"
+	searchopen "http://www.google.com/search?q=`urlencode "$1"`"
 }
 
 #Christian Classics Ethereal Library
 function ccel
 {
-  searchopen "http://www.ccel.org/search?qu=`urlencode "$1"`"
+	searchopen "http://www.ccel.org/search?qu=`urlencode "$1"`"
 }
 
 function cnet
 {
-  searchopen "http://cnet.com/1770-5_1-0-{startPage?}.html?query=`urlencode "$1"`&tag=opensearch"
+	searchopen "http://cnet.com/1770-5_1-0-{startPage?}.html?query=`urlencode "$1"`&tag=opensearch"
 }
 
 # ESV Bible
 function esv
 {
-  searchopen "http://www.esvbible.org/search/`urlencode "$1"`/"
+	searchopen "http://www.esvbible.org/search/`urlencode "$1"`/"
 }
 
 # WordPress codex
 function wordpress
 {
-  searchopen "http://wordpress.org/search/do-search.php?search=`urlencode "$1"`"
+	searchopen "http://wordpress.org/search/do-search.php?search=`urlencode "$1"`"
 }
 
 function worldcat
 {
-  searchopen "http://www.worldcat.org$myproxy/search?q=`urlencode "$1"`"
+	searchopen "http://www.worldcat.org$myproxy/search?q=`urlencode "$1"`"
 }
 
 # This is the engine for the Rice University library's OneSearch tool.
 # It may not work universally.
 function ebsco
 {
-	open "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
+	searchopen "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
 }
 
 
