@@ -45,6 +45,14 @@ myproxy='.ezproxy.rice.edu'
 alias searchopen='open'
 
 
+# If you want to see a list of all the search engines available using
+# these functions, this alias allows you to type "searchlist" at the
+# command-line. You'll also need to set the SEPATH variable to
+# the location of this file on your computer.
+
+SEPATH=$HOME/.bashfiles/se-aliases/se-aliases.sh
+alias searchlist="awk '/^function/ {print \$2}' $SEPATH | sort" 
+
 # Use these at the command line by typing the function's name and the
 # query. Queries with more than one word should be enclosed in double
 # quotes. Literal quotes can be added to queries with the escape slash.
