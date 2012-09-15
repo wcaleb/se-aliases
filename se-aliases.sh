@@ -215,6 +215,9 @@ function worldcat
 	searchopen "http://www.worldcat.org$myproxy/search?q=`urlencode "$1"`"
 }
 
+# The following search engines are probably useful only to the author.
+# You can delete to the end of the file without breaking anything.
+
 # This is the engine for the Rice University library's OneSearch tool.
 # It may not work universally.
 function ebsco
@@ -222,4 +225,20 @@ function ebsco
 	searchopen "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
 }
 
+# Rice University online directory
+function ricedir
+{
+	searchopen "http://search.rice.edu/html/people/p/0/0/?q=`urlencode "$1"`"
+}
 
+# Rice University website
+function rice
+{
+	searchopen "http://search.rice.edu/?q=`urlencode "$1"`"
+}
+
+# Rice University library website
+function fondren
+{
+	searchopen "http://library.rice.edu/search/?SearchableText=`urlencode "$1"`"
+}
