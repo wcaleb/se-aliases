@@ -4,9 +4,9 @@
 # The idea for this was suggested by Lincoln Mullen's post on
 # configuring Chrome for specific search engines. I source this file 
 # in my bashrc, and then use DTerm or the Terminal to quickly search. 
-# This method makes Mullen's ideas browser-independent on the Mac.
-# Search engines can be tied to specific browsers using the -a flag for
-# the open command. Feel free to fork and use however you see fit.
+# This method makes Mullen's ideas browser-independent. Mullen also
+# suggested some changes to the functions that make these work in any
+# Unix environment too. Feel free to fork and use however you see fit.
 #
 # For more context, see:
 # http://chronicle.com/blogs/profhacker/how-to-hack-urls-for-faster-searches-in-your-browser/42304
@@ -118,28 +118,9 @@ function stack
 	searchopen "http://stackoverflow.com/search?q=`urlencode "$1"`"
 }
 
-<<<<<<< HEAD
 function super
 {
 	open "http://superuser.com/search?q=`urlencode "$1"`"
-}
-
-# The rest of these probably will not work for everyone.
-=======
-function clio
-{
-	searchopen "http://web.ebscohost.com$myproxy/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
-}
->>>>>>> 4c175d56728a15b505177e0794898f43b45822a1
-
-function anb
-{
-	searchopen "http://www.anb.org$myproxy/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "$1"`&Login=Quick+Search"
-}
-
-function jstor
-{
-	searchopen "http://www.jstor.org$myproxy/action/doBasicSearch?Query=`urlencode "$1"`"
 }
 
 function wikipedia
@@ -199,13 +180,6 @@ function wordpress
   searchopen "http://wordpress.org/search/do-search.php?search=`urlencode "$1"`"
 }
 
-# The rest of these probably will not work for everyone.
-
-function ebsco
-{
-	searchopen "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
-}
-
 # You'll want to change this to your institution in the subdomain
 function worldcat
 {
@@ -218,3 +192,19 @@ function ebsco
 {
 	open "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
 }
+
+function clio
+{
+	searchopen "http://web.ebscohost.com$myproxy/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
+}
+
+function anb
+{
+	searchopen "http://www.anb.org$myproxy/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "$1"`&Login=Quick+Search"
+}
+
+function jstor
+{
+	searchopen "http://www.jstor.org$myproxy/action/doBasicSearch?Query=`urlencode "$1"`"
+}
+
