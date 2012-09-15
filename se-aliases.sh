@@ -17,6 +17,23 @@
 
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
 
+# Your academic library probably has a proxy system. For example, to 
+# access JSTOR through Brandeis University's libraries, the url
+#      http://www.jstor.org/
+# becomes http://www.jstor.org.resources.library.brandeis.edu/
+# Fill in the variable below with the value of your proxy. Using the 
+# example above:
+#      myproxy='.resources.library.brandeis.edu'
+#  Then in the # search functions which you want to run through the 
+#  library proxy, add the following:
+#     http://www.jstor.org$myproxy/
+# If you don't have a library proxy, leave the string empty. Even the 
+# searches which other users have provided will still work without a 
+# proxy.
+
+myproxy=''
+
+
 # Use these at the command line by typing the function's name and the
 # query. Queries with more than one word should be enclosed in double
 # quotes. Literal quotes can be added to queries with the escape slash.
@@ -29,7 +46,7 @@ alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.ar
 
 function scholar
 {
-	open "http://scholar.google.com/scholar?hl=en&q=`urlencode "$1"`"
+	open "http://scholar.google.com$myproxy/scholar?hl=en&q=`urlencode "$1"`"
 }
 
 function books
@@ -91,6 +108,21 @@ function stack
 	open "http://stackoverflow.com/search?q=`urlencode "$1"`"
 }
 
+function clio
+{
+	open "http://web.ebscohost.com$myproxy/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
+}
+
+function anb
+{
+	open "http://www.anb.org$myproxy/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "$1"`&Login=Quick+Search"
+}
+
+function jstor
+{
+	open "http://www.jstor.org$myproxy/action/doBasicSearch?Query=`urlencode "$1"`"
+}
+
 # The rest of these probably will not work for everyone.
 
 function ebsco
@@ -98,17 +130,3 @@ function ebsco
 	open "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
 }
 
-function clio
-{
-	open "http://web.ebscohost.com.ezproxy.rice.edu/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
-}
-
-function anb
-{
-	open "http://www.anb.org.ezproxy.rice.edu/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "$1"`&Login=Quick+Search"
-}
-
-function jstor
-{
-	open "http://www.jstor.org/action/doBasicSearch?Query=`urlencode "$1"`"
-}
