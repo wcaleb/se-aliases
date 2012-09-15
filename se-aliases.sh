@@ -33,6 +33,7 @@ alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.ar
 
 myproxy=''
 
+
 # Different OSes have different commands for opening a URL in a browser 
 # from a command line. Change the alias below to the proper command for 
 # your OS. The default 'open' works on Macs. On Ubuntu the command would 
@@ -41,6 +42,7 @@ myproxy=''
 # the open command, you could do it in one place by changing the alias.
 
 alias searchopen='open'
+
 
 # Use these at the command line by typing the function's name and the
 # query. Queries with more than one word should be enclosed in double
@@ -131,6 +133,63 @@ function jstor
 	searchopen "http://www.jstor.org$myproxy/action/doBasicSearch?Query=`urlencode "$1"`"
 }
 
+function wikipedia
+{
+  searchopen "http://en.wikipedia.org/wiki/Special:Search?search=`urlencode "$1"`"
+}
+
+# Bookfinder for book price comparison
+function bookfinder   
+{
+  searchopen "http://www.bookfinder.com/search/?keywords=`urlencode "$1"`&st=xl&ac=qr&src=opensearch"
+}
+
+# Library of Congress catalog
+function lcongress    
+{
+  searchopen "http://catalog.loc.gov/vwebv/search?searchArg=`urlencode "$1"`&searchCode=GKEY%5E*&searchType=0&recCount=100&sk=en_US"
+}
+
+# Amazon Video on Demand
+function vod
+{
+  searchopen "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Damazontv&field-keywords=`urlencode "$1"`&x=0&y=0"
+}
+
+function profhacker
+{
+  searchopen "http://chronicle.com$myproxy/search/?contextId=5&searchQueryString=`urlencode "$1"`&facetName%5B0%5D=content&facetName%5B1%5D=blog&facetValue%5B0%5D=blogPost&facetValue%5B1%5D=27&facetCaption%5B0%5D=Blog+Post&facetCaption%5B1%5D=ProfHacker&omni_mfs=true"
+}
+
+
+function google
+{
+  searchopen "http://www.google.com/search?q=`urlencode "$1"`"
+}
+
+#Christian Classics Ethereal Library
+function ccel
+{
+  searchopen "http://www.ccel.org/search?qu=`urlencode "$1"`"
+}
+
+function cnet
+{
+  searchopen "http://cnet.com/1770-5_1-0-{startPage?}.html?query=`urlencode "$1"`&tag=opensearch"
+}
+
+# ESV Bible
+function esv
+{
+  searchopen "http://www.esvbible.org/search/`urlencode "$1"`/"
+}
+
+# WordPress codex
+function wordpress
+{
+  searchopen "http://wordpress.org/search/do-search.php?search=`urlencode "$1"`"
+}
+
 # The rest of these probably will not work for everyone.
 
 function ebsco
@@ -138,3 +197,8 @@ function ebsco
 	searchopen "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
 }
 
+# You'll want to change this to your institution in the subdomain
+function worldcat
+{
+  searchopen "http://brandeis.worldcat.org$myproxy/search?qt=wc_org_brandeis&q=`urlencode "$1"`&scope=0&oldscope=&wcsbtn2w=Search"
+}
