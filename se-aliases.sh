@@ -91,6 +91,11 @@ function stack
 	open "http://stackoverflow.com/search?q=`urlencode "$1"`"
 }
 
+function super
+{
+	open "http://superuser.com/search?q=`urlencode "$1"`"
+}
+
 # The rest of these probably will not work for everyone.
 
 function ebsco
