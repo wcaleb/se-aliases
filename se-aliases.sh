@@ -202,3 +202,10 @@ function worldcat
 {
   searchopen "http://brandeis.worldcat.org$myproxy/search?qt=wc_org_brandeis&q=`urlencode "$1"`&scope=0&oldscope=&wcsbtn2w=Search"
 }
+
+# The rest of these probably will not work for everyone.
+
+function ebsco
+{
+	open "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
+}
