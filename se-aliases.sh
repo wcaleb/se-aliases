@@ -220,6 +220,11 @@ function worldcat
 	searchopen "http://www.worldcat.org$myproxy/search?q=`urlencode "$1"`"
 }
 
+function docsouth
+{
+	searchopen "http://www.googlesyndicatedsearch.com/u/docsouth?q=`urlencode "$1"`&sa=Search"
+}
+
 # The following search engines are probably useful only to the author.
 # You can delete to the end of the file without breaking anything.
 
