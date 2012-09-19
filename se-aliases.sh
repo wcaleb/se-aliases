@@ -164,6 +164,11 @@ function bookfinder
 	searchopen "http://www.bookfinder.com/search/?keywords=`urlencode "$1"`&st=xl&ac=qr&src=opensearch"
 }
 
+function oed
+{
+	searchopen "http://www.oed.com$myproxy/search?searchType=dictionary&q=`urlencode "$1"`&_searchBtn=Search"
+}
+
 # Library of Congress catalog
 function lcongress    
 {
