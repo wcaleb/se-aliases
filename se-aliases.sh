@@ -217,7 +217,7 @@ function wordpress
 
 function worldcat
 {
-	searchopen "http://www.worldcat.org$myproxy/search?q=`urlencode "$1"`"
+	searchopen "http://rice.worldcat.org$myproxy/search?q=`urlencode "$1"`"
 }
 
 function docsouth
