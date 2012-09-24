@@ -228,6 +228,12 @@ function docsouth
 # The following search engines are probably useful only to the author.
 # You can delete to the end of the file without breaking anything.
 
+# Search my own bookmarks on Pinboard
+function pins
+{
+	searchopen "http://pinboard.in/search/?query=`urlencode "$1"`&mine=Search+Mine"
+}
+
 # This is the engine for the Rice University library's OneSearch tool.
 # It may not work universally.
 function ebsco
