@@ -215,6 +215,7 @@ function wordpress
 	searchopen "http://wordpress.org/search/do-search.php?search=`urlencode "$1"`"
 }
 
+# Replace 'rice' in the URL with your own library, or with 'www'
 function worldcat
 {
 	searchopen "http://rice.worldcat.org$myproxy/search?q=`urlencode "$1"`"
