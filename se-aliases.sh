@@ -143,6 +143,12 @@ function hotx
 	searchopen "http://www.tshaonline.org/search/node/`echo "$1" | sed 's/ /%20/g'`"
 }
 
+# Currently set to search for query in title
+function poth
+{
+	searchopen "http://texashistory.unt.edu/search/?q=`urlencode "$1"`&t=dc_title"
+}
+
 function stackover
 {
 	searchopen "http://stackoverflow.com/search?q=`urlencode "$1"`"
