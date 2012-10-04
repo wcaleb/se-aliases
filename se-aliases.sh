@@ -143,10 +143,20 @@ function hotx
 	searchopen "http://www.tshaonline.org/search/node/`echo "$1" | sed 's/ /%20/g'`"
 }
 
-# Currently set to search for query in title
 function poth
 {
-	searchopen "http://texashistory.unt.edu/search/?q=`urlencode "$1"`&t=dc_title"
+	sort=;title=;local OPTIND;
+	while getopts "dt" OPTION; do
+		case "$OPTION" in
+			d)
+				sort="&sort=date_a"
+				;;
+			t)
+				title="&t=dc_title"
+				;;
+		esac
+	done
+	searchopen "http://texashistory.unt.edu/search/?q=`urlencode "$last"``echo "$sort"``echo "$title"`"
 }
 
 function stackover
