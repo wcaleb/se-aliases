@@ -88,10 +88,10 @@ EOF
 }
 
 function seoptions {
-	oldfirst=;title=;OPTIND=1;
-	while getopts "honit" OPTION; do
+	oldfirst=;title=;newfirst=;interesting=;OPTIND=1;
+	while getopts "vonit" OPTION; do
 		case "$OPTION" in
-			h)
+			v)
 				seusage
 				;;
 			n)
