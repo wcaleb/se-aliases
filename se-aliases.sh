@@ -63,183 +63,249 @@ alias searchlist="awk '/^function/ {print \$2}' $SEPATH | sort"
 # scholar "American abolitionists"
 # scholar "\"American abolitionists\""
 
-function scholar
+function seusage() {
+cat << EOF
+
+By default, you are running a keyword search. 
+Some options may be available, depending on your search engine.
+
+Help:
+	
+	-v			Verbose; show this message before searching
+	-o			Sort by date (oldest first)
+	-n			Sort by date (newest first)
+	-i			Sort by interesting (Flickr only)
+	-t			Search in "title" field
+
+Note: Use backslash escapes for literal quotes.
+
+Examples:
+
+	scholar abolitionists
+	scholar "American abolitionists"
+	poth -td "\"Texas Republican\""
+EOF
+}
+
+function seoptions {
+	oldfirst=;title=;OPTIND=1;
+	while getopts "honit" OPTION; do
+		case "$OPTION" in
+			h)
+				seusage
+				;;
+			n)
+				newfirst=1
+				;;
+			o)
+				oldfirst=1
+				;;
+			t)
+				title=1
+				;;
+			i)  
+				interesting=1
+				;;
+		esac
+	done
+}
+
+function scholar()
 {
-	searchopen "http://scholar.google.com$myproxy/scholar?hl=en&q=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://scholar.google.com$myproxy/scholar?hl=en&q=`urlencode "${@: -1}"`"
 }
 
 function books
 {
-	searchopen "http://books.google.com/books?hl=en&q=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://books.google.com/books?hl=en&q=`urlencode "${@: -1}"`"
 }
 
 # Searches for media type "texts" in archive.org
 function archiveorg
 {
-	searchopen "http://archive.org/search.php?query=`urlencode "$1"`%20AND%20mediatype%3Atexts"
+	seoptions "$@"
+	searchopen "http://archive.org/search.php?query=`urlencode "${@: -1}"`%20AND%20mediatype%3Atexts"
 }
 
 function images
 {
-	searchopen "http://images.google.com/images?q=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://images.google.com/images?q=`urlencode "${@: -1}"`"
 }
 
 function jstor
 {
-	searchopen "http://www.jstor.org$myproxy/action/doBasicSearch?Query=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://www.jstor.org$myproxy/action/doBasicSearch?Query=`urlencode "${@: -1}"`"
 }
 
 function clio
 {
-	searchopen "http://web.ebscohost.com$myproxy/ehost/results?&bquery=`urlencode "$1"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
+	seoptions "$@"
+	searchopen "http://web.ebscohost.com$myproxy/ehost/results?&bquery=`urlencode "${@: -1}"`&bdata=JmRiPWFobCZ0eXBlPTAmc2l0ZT1laG9zdC1saXZlJnNjb3BlPXNpdGU%3d"
 }
 
 function anb
 {
-	searchopen "http://www.anb.org$myproxy/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "$1"`&Login=Quick+Search"
+	seoptions "$@"
+	searchopen "http://www.anb.org$myproxy/articles/asearch.html?which_index=both&meta-dc=10&func=simple_search&field-Name=`urlencode "${@: -1}"`&Login=Quick+Search"
 }
 
 function amazon
 {
-	searchopen "http://www.amazon.com/s/?url=search-alias%3Daps&field-keywords=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://www.amazon.com/s/?url=search-alias%3Daps&field-keywords=`urlencode "${@: -1}"`"
 }
 
 function imdb
 {
-	searchopen "http://www.imdb.com/find?q=`urlencode "$1"`&s=all"
+	seoptions "$@"
+	searchopen "http://www.imdb.com/find?q=`urlencode "${@: -1}"`&s=all"
 }
 
 function spanish
 {
-	searchopen "http://translate.google.com/#en/es/`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://translate.google.com/#en/es/`urlencode "${@: -1}"`"
 }
 
 function english
 {
-	searchopen "http://translate.google.com/#es/en/`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://translate.google.com/#es/en/`urlencode "${@: -1}"`"
 }
 
 function wikipedia
 {
-	searchopen "http://en.wikipedia.org/w/index.php?search=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://en.wikipedia.org/w/index.php?search=`urlencode "${@: -1}"`"
 }
 
 # Search Flickr for Creative Commons pictures
 # http://yubnub.org/kernel/man?args=fliccr
-# s=int sorts the results by "interesting"
 function flickr
 {
-	searchopen "http://flickr.com/search/?q=`urlencode "$1"`&l=cc&ss=1&ct=6&s=int"
+	seoptions "$@"
+	searchopen "http://flickr.com/search/?q=`urlencode "${@: -1}"`&l=cc&ss=1&ct=6`if [ -n "$newfirst" ]; then echo "&s=rec";fi``if [ -n "$interesting" ]; then echo "&s=int"; fi`"
 }
 
 function youtube
 {
-	searchopen "http://www.youtube.com/results?search_query=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://www.youtube.com/results?search_query=`urlencode "${@: -1}"`"
 }
 
 # Note: Handbook of Texas Online uses %20 instead of + for spaces
 function hotx
 {
-	searchopen "http://www.tshaonline.org/search/node/`echo "$1" | sed 's/ /%20/g'`"
+	seoptions "$@"
+	searchopen "http://www.tshaonline.org/search/node/`echo "${@: -1}" | sed 's/ /%20/g'`"
 }
 
 function poth
 {
-	sort=;title=;local OPTIND;
-	while getopts "dt" OPTION; do
-		case "$OPTION" in
-			d)
-				sort="&sort=date_a"
-				;;
-			t)
-				title="&t=dc_title"
-				;;
-		esac
-	done
-	searchopen "http://texashistory.unt.edu/search/?q=`urlencode "$last"``echo "$sort"``echo "$title"`"
+	seoptions "$@"
+	searchopen "http://texashistory.unt.edu/search/?q=`urlencode "${@: -1}"``if [ -n "$oldfirst" ]; then echo "&sort=date_a";fi``if [ -n "$title" ]; then echo "&t=dc_title"; fi`"
 }
 
 function stackover
 {
-	searchopen "http://stackoverflow.com/search?q=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://stackoverflow.com/search?q=`urlencode "${@: -1}"`"
 }
 
 function superuser
 {
-	searchopen "http://superuser.com/search?q=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://superuser.com/search?q=`urlencode "${@: -1}"`"
 }
 
 function wikipedia
 {
-	searchopen "http://en.wikipedia.org/wiki/Special:Search?search=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://en.wikipedia.org/wiki/Special:Search?search=`urlencode "${@: -1}"`"
 }
 
 # Bookfinder for book price comparison
 function bookfinder   
 {
-	searchopen "http://www.bookfinder.com/search/?keywords=`urlencode "$1"`&st=xl&ac=qr&src=opensearch"
+	seoptions "$@"
+	searchopen "http://www.bookfinder.com/search/?keywords=`urlencode "${@: -1}"`&st=xl&ac=qr&src=opensearch"
 }
 
 function oed
 {
-	searchopen "http://www.oed.com$myproxy/search?searchType=dictionary&q=`urlencode "$1"`&_searchBtn=Search"
+	seoptions "$@"
+	searchopen "http://www.oed.com$myproxy/search?searchType=dictionary&q=`urlencode "${@: -1}"`&_searchBtn=Search"
 }
 
 # Library of Congress catalog
 function lcongress    
 {
-	searchopen "http://catalog.loc.gov/vwebv/search?searchArg=`urlencode "$1"`&searchCode=GKEY%5E*&searchType=0&recCount=100&sk=en_US"
+	seoptions "$@"
+	searchopen "http://catalog.loc.gov/vwebv/search?searchArg=`urlencode "${@: -1}"`&searchCode=GKEY%5E*&searchType=0&recCount=100&sk=en_US"
 }
 
 # Amazon Video on Demand
 function vod
 {
-	searchopen "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Damazontv&field-keywords=`urlencode "$1"`&x=0&y=0"
+	seoptions "$@"
+	searchopen "http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Damazontv&field-keywords=`urlencode "${@: -1}"`&x=0&y=0"
 }
 
 function profhacker
 {
-	searchopen "http://chronicle.com$myproxy/search/?contextId=5&searchQueryString=`urlencode "$1"`&facetName%5B0%5D=content&facetName%5B1%5D=blog&facetValue%5B0%5D=blogPost&facetValue%5B1%5D=27&facetCaption%5B0%5D=Blog+Post&facetCaption%5B1%5D=ProfHacker&omni_mfs=true"
+	seoptions "$@"
+	searchopen "http://chronicle.com$myproxy/search/?contextId=5&searchQueryString=`urlencode "${@: -1}"`&facetName%5B0%5D=content&facetName%5B1%5D=blog&facetValue%5B0%5D=blogPost&facetValue%5B1%5D=27&facetCaption%5B0%5D=Blog+Post&facetCaption%5B1%5D=ProfHacker&omni_mfs=true"
 }
 
 
 function google
 {
-	searchopen "http://www.google.com/search?q=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://www.google.com/search?q=`urlencode "${@: -1}"`"
 }
 
 #Christian Classics Ethereal Library
 function ccel
 {
-	searchopen "http://www.ccel.org/search?qu=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://www.ccel.org/search?qu=`urlencode "${@: -1}"`"
 }
 
 function cnet
 {
-	searchopen "http://cnet.com/1770-5_1-0-{startPage?}.html?query=`urlencode "$1"`&tag=opensearch"
+	seoptions "$@"
+	searchopen "http://cnet.com/1770-5_1-0-{startPage?}.html?query=`urlencode "${@: -1}"`&tag=opensearch"
 }
 
 # ESV Bible
 function esv
 {
-	searchopen "http://www.esvbible.org/search/`urlencode "$1"`/"
+	seoptions "$@"
+	searchopen "http://www.esvbible.org/search/`urlencode "${@: -1}"`/"
 }
 
 # WordPress codex
 function wordpress
 {
-	searchopen "http://wordpress.org/search/do-search.php?search=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://wordpress.org/search/do-search.php?search=`urlencode "${@: -1}"`"
 }
 
 # Replace 'rice' in the URL with your own library, or with 'www'
 function worldcat
 {
-	searchopen "http://rice.worldcat.org$myproxy/search?q=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://rice.worldcat.org$myproxy/search?q=`urlencode "${@: -1}"`"
 }
 
 function docsouth
 {
-	searchopen "http://www.googlesyndicatedsearch.com/u/docsouth?q=`urlencode "$1"`&sa=Search"
+	seoptions "$@"
+	searchopen "http://www.googlesyndicatedsearch.com/u/docsouth?q=`urlencode "${@: -1}"`&sa=Search"
 }
 
 # The following search engines are probably useful only to the author.
@@ -248,30 +314,35 @@ function docsouth
 # Search my own bookmarks on Pinboard
 function pins
 {
-	searchopen "http://pinboard.in/search/?query=`urlencode "$1"`&mine=Search+Mine"
+	seoptions "$@"
+	searchopen "http://pinboard.in/search/?query=`urlencode "${@: -1}"`&mine=Search+Mine"
 }
 
 # This is the engine for the Rice University library's OneSearch tool.
 # It may not work universally.
 function ebsco
 {
-	searchopen "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "$1"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
+	seoptions "$@"
+	searchopen "http://ehis.ebscohost.com/eds/results?bquery=`urlencode "${@: -1}"`&bdata=JnR5cGU9MCZzaXRlPWVkcy1saXZlJnNjb3BlPXNpdGU%3d"
 }
 
 # Rice University online directory
 function ricedir
 {
-	searchopen "http://search.rice.edu/html/people/p/0/0/?q=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://search.rice.edu/html/people/p/0/0/?q=`urlencode "${@: -1}"`"
 }
 
 # Rice University website
 function rice
 {
-	searchopen "http://search.rice.edu/?q=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://search.rice.edu/?q=`urlencode "${@: -1}"`"
 }
 
 # Rice University library website
 function fondren
 {
-	searchopen "http://library.rice.edu/search/?SearchableText=`urlencode "$1"`"
+	seoptions "$@"
+	searchopen "http://library.rice.edu/search/?SearchableText=`urlencode "${@: -1}"`"
 }
