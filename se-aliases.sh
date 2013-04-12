@@ -346,3 +346,10 @@ function fondren
 	seoptions "$@"
 	searchopen "http://library.rice.edu/search/?SearchableText=`urlencode "${@: -1}"`"
 }
+
+# Digital Humanities Questions and Answers
+function dhqa
+{
+    seoptions "$@"
+    searchopen "http://digitalhumanities.org/answers/search.php?q=`urlencode "${@:-1}"`"
+}
