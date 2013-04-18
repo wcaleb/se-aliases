@@ -1,5 +1,5 @@
 # Search Engine Aliases
-# by W. Caleb McDaniel, 2012
+# by W. Caleb McDaniel and Lincoln Mullen, 2012
 
 # The idea for this was suggested by Lincoln Mullen's post on
 # configuring Chrome for specific search engines. I source this file 
