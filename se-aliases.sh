@@ -222,6 +222,13 @@ function superuser
 	searchopen "http://superuser.com/search?q=`urlencode "${@: -1}"`"
 }
 
+# Digital Humanities Questions and Answers
+function dhqa
+{
+    seoptions "$@"
+    searchopen "http://digitalhumanities.org/answers/search.php?q=`urlencode "${@:-1}"`"
+}
+
 function wikipedia
 {
 	seoptions "$@"
@@ -239,6 +246,12 @@ function oed
 {
 	seoptions "$@"
 	searchopen "http://www.oed.com$myproxy/search?searchType=dictionary&q=`urlencode "${@: -1}"`&_searchBtn=Search"
+}
+
+function onelook
+{
+	seoptions "$@"
+	searchopen "http://www.onelook.com/?w=`urlencode "${@: -1}"`&ls=a"
 }
 
 # Library of Congress catalog
@@ -347,9 +360,3 @@ function fondren
 	searchopen "http://library.rice.edu/search/?SearchableText=`urlencode "${@: -1}"`"
 }
 
-# Digital Humanities Questions and Answers
-function dhqa
-{
-    seoptions "$@"
-    searchopen "http://digitalhumanities.org/answers/search.php?q=`urlencode "${@:-1}"`"
-}
