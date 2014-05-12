@@ -106,7 +106,7 @@ function seoptions {
 			i)  
 				interesting=1
 				;;
-		esac
+		esac;
 	done
 }
 
@@ -163,6 +163,12 @@ function imdb
 {
 	seoptions "$@"
 	searchopen "http://www.imdb.com/find?q=`urlencode "${@: -1}"`&s=all"
+}
+
+function nerdquery
+{
+	seoptions "$@"
+	searchopen "http://nerdquery.com/?media_only=0&query=`urlencode "${@: -1}"`&search=1&category=-1"
 }
 
 function spanish
