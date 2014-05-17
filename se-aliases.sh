@@ -228,6 +228,12 @@ function superuser
 	searchopen "http://superuser.com/search?q=`urlencode "${@: -1}"`"
 }
 
+function hoogle
+{
+	seoptions "$@"
+	searchopen "http://www.haskell.org/hoogle/?hoogle=`urlencode "${@: -1}"`"
+}
+
 # Digital Humanities Questions and Answers
 function dhqa
 {
